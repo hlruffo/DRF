@@ -13,8 +13,7 @@ def api_home(request, *args, **kwars):
    
     serializer = ProductSerializer(data=request.data)
     if serializer.is_valid():
-        serializer.save()
-        print(serializer.data)
-        data = serializer.data
-        return Response(data)
+        #instance = serializer.save()
+        print(serializer.data)        
+        return Response(serializer.data)
     
