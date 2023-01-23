@@ -12,8 +12,10 @@ from rest_framework.response import Response
 def api_home(request, *args, **kwars):
    
     serializer = ProductSerializer(data=request.data)
-    if serializer.is_valid():
+    if serializer.is_valid(raise_exception=True):
+        #istance = serializer.save()
         #instance = serializer.save()
         print(serializer.data)        
         return Response(serializer.data)
+    return Response({"invalid": "Not good data"}, status= 400)
     
